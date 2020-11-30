@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Castoro&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background: url(/images/bg.jpg) no-repeat center center/cover;
+}
+
+h1 {
+  color: rgb(243, 202, 126);
+  font-size: 40px;
+  margin: 30px;
+  text-align: center;
+  padding: 10px;
+}
+
+p {
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(15, 15, 75);
+  font-family: "Castoro", serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+i {
+  font-size: 50px;
+  padding-bottom: 15px;
+  color: #05083a;
+}
+.container {
+  width: 75%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 10px;
+  background: linear-gradient(to bottom, #b9d1eea2 35%, #b2e2e9c2 70%);
+  box-shadow: 0 4px 16px rgba(88, 85, 85, 0.644);
+}
+
+.searchBar {
+  height: 42px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+.searchInput {
+  height: 100%;
+  flex-grow: 1;
+  margin: 1px 0;
+  margin-right: 5px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+  background-color: transparent;
+  font-size: 20px;
+  color: rgb(71, 71, 71);
+  font-weight: 800px;
+}
+.searchBar a {
+  height: 100%;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s;
+  background: rgba(141, 218, 228, 0.596);
+  transition: all 0.2s;
+}
+
+.searchBar ion-icon {
+  color: rgb(56, 5, 56);
+  font-size: 23px;
+  --ionicon-stroke-width: 50px;
+  margin: auto 4px;
+  cursor: pointer;
+  padding: 5px;
+}
+.searchBar a:hover {
+  background: rgb(250, 249, 249);
+}
+.currentWeatherImg {
+  margin: 0 auto;
+  width: 60%;
+  height: 60%;
+}
+.mainForcast {
+  width: 100%;
+  margin: 10px;
+  padding: 20px;
+}
+.mainCity__date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.mainCity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-sart;
+}
+.mainCity p {
+  font-size: 80px;
+  color: rgb(15, 15, 75);
+}
+.mainCity h2 {
+  color: rgb(243, 243, 245);
+}
+.mainCity__cond {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.todayWeather,
+.sixDay {
+  width: 100%;
+   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.todayWeather .col-3,
+.sixDay .col-2 {
+  width: 100%;
+  flex: 1 1 0;
+  text-align: center;
+  border-left: 1px solid grey;
+}
+
+
