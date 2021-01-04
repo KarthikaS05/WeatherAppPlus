@@ -126,7 +126,8 @@ i {
   cursor: pointer;
   padding: 5px;
 }
-.searchBar a:hover {
+.searchBar a:hover,
+.searchBar button:hover {
   background: rgb(250, 249, 249);
 }
 .currentWeatherImg {
