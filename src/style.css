@@ -104,6 +104,20 @@ i {
   transition: all 0.2s;
 }
 
+.searchBar button {
+  height: 100%;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s;
+  background: rgba(141, 218, 228, 0.596);
+  transition: all 0.2s;
+  border: none;
+  outline: none;
+}
+
 .searchBar ion-icon {
   color: rgb(56, 5, 56);
   font-size: 23px;
@@ -135,15 +149,29 @@ i {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-sart;
+  justify-content: center;
 }
+
 .mainCity p {
-  font-size: 80px;
+  font-size: 70px;
   color: rgb(15, 15, 75);
+  opacity: 0.7;
+  text-align: center;
 }
 .mainCity h2 {
   color: rgb(243, 243, 245);
 }
+
+.deg {
+  color: #05083a;
+  font-size: 25px;
+}
+.mainCity span a {
+  color: #02163b;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
 .mainCity__cond {
   display: flex;
   flex-direction: column;
@@ -154,7 +182,7 @@ i {
 .todayWeather,
 .sixDay {
   width: 100%;
-   margin: 10px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,4 +197,11 @@ i {
   border-left: 1px solid grey;
 }
 
-
+.isDisabled {
+  color: currentColor;
+  font-weight: bold;
+  cursor: not-allowed;
+  opacity: 0.7;
+  text-decoration: none;
+  pointer-events: none;
+}

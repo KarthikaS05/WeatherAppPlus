@@ -20,18 +20,33 @@
     <div class="container">
       <form action="#" class="searchBar">
         <a><ion-icon name="location-outline"></ion-icon></a>
-        <input type="text" class="searchInput" placeholder="Search City" />
-        <a><ion-icon name="search-outline"></ion-icon></a>
+        <input
+          type="text"
+          id="searchInput"
+          class="searchInput"
+          placeholder="Search City"
+          autocomplete="off"
+          autofocus="on"
+        />
+        <!--  <a id="search"><ion-icon name="search-outline"></ion-icon></a> -->
+        <button type="submit" id="search" value="Search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
       </form>
       <div class="row mainForcast">
         <div class="col-3 mainCity__date">
-          <h4>Sunday</h4>
-          <p>30 Nov 2020</p>
-          <p>5.19 pm</p>
+          <h4 id="day"></h4>
+          <p id="date"></p>
+          <p id="time"></p>
         </div>
         <div class="col-6 mainCity">
-          <h2>Melbourne</h2>
-          <p>20º</p>
+          <h2 id="city">Melbourne</h2>
+          <span class="deg"
+            ><a href="#" id="cel" class="isDisabled">℃ </a> |
+            <a href="#" id="fahr">℉</a></span
+          >
+          <p id="temp">20</p>
+
           <img class="currentWeatherImg" src="images/sunny.svg" alt="" />
         </div>
         <div class="col-3 mainCity__cond">
@@ -113,9 +128,8 @@
       src="https://kit.fontawesome.com/39e3737a5f.js"
       crossorigin="anonymous"
     ></script>
-
-    <script src="src/main.js"></script>
     <!-- Icon script -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="src/script.js"></script>
   </body>
 </html>
