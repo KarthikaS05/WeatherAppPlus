@@ -1,8 +1,8 @@
+//To get the current date and time
 let now = new Date();
-
-let h4Day = document.querySelector("#day");
-let pDate = document.querySelector("#date");
-let pTime = document.querySelector("#time");
+const h4Day = document.querySelector("#day");
+const pDate = document.querySelector("#date");
+const pTime = document.querySelector("#time");
 
 let date = now.getDate();
 let hours = now.getHours();
@@ -35,35 +35,40 @@ const months = [
 ];
 let month = months[now.getMonth()];
 
+//Feature #1 - set current date and time
 h4Day.innerHTML = `${day}`;
 pDate.innerHTML = `${date} ${month} ${year}`;
 pTime.innerHTML = `${hours}:${minutes} hrs`;
 
-function setCity(event) {
+//Feature #2
+//to set the city from search input
+const setCity = (event) => {
   event.preventDefault();
-  console.log(event);
-  let city = document.querySelector("#city");
-  let cityValue = document.querySelector("#searchInput");
+  const city = document.querySelector("#city");
+  //const cityValue = document.querySelector("#searchInput");
   console.log(cityValue.value);
   if (cityValue !== null && cityValue.value.length > 0) {
     city.innerHTML = cityValue.value.toUpperCase();
   } else {
     alert("Please enter a city");
   }
-}
+};
 
 /* let search = document.querySelector("#search");
 search.addEventListener("click", setCity); */
-let cityValue = document.querySelector("#searchInput");
-cityValue.addEventListener("keypress", function (event) {
+const cityValue = document.querySelector("#searchInput");
+cityValue.addEventListener("keypress", (event) => {
   if (event.keyCode === 13) {
     setCity(event);
   }
 });
 
-let form = document.querySelector(".searchBar");
+const form = document.querySelector(".searchBar");
 form.addEventListener("submit", setCity);
+
+//Bonus Feature
 //function to convert temperature to fahreniet from celsius
+
 let ctof = (cel) => {
   console.log(`cel = ${cel}`);
   let f = cel * (9 / 5) + 32;
@@ -71,6 +76,7 @@ let ctof = (cel) => {
   return f;
 };
 
+//function to convert temperature to celsius from fahreniet
 let ftoC = (fah) => {
   console.log(`f = ${fah}`);
   let c = ((fah - 32) * 5) / 9;
@@ -78,21 +84,23 @@ let ftoC = (fah) => {
   return c;
 };
 
-let temp = document.querySelector("#temp");
+const temp = document.querySelector("#temp");
 
-console.log(temp.innerHTML);
-
-function setDegToCel(event) {
+//event to set temperature to C
+const setDegToCel = (event) => {
   console.log("set to cel");
   event.preventDefault();
-  let c = ftoC(temp.innerHTML);
-  temp.innerHTML = c;
+  let [currTemp] = temp.innerText.split(" "); //to get 20 and discard ℉
+  console.log(currTemp);
+  let c = ftoC(currTemp);
+  temp.textContent = `${c} ℃`;
   console.log(`Deg to cel = ${c}`);
   fahr.classList.toggle("isDisabled");
   cel.classList.toggle("isDisabled");
-}
+};
 
-function setDegToFahr(event) {
+//event to set temperature to F
+const setDegToFahr = (event) => {
   console.log("set to Fahr");
   event.preventDefault();
   const disabled = cel.classList.contains("isDisabled");
@@ -101,13 +109,18 @@ function setDegToFahr(event) {
     console.log("remove ");
     cel.classList.remove("isDisabled");
   }
-  let fah = ctof(temp.innerHTML);
-  temp.innerHTML = fah;
+  //split gives array ["20","℃"]
+  //[currTemp] = 20
+  let [currTemp] = temp.innerText.split(" "); //to get number and discard ℃
+  console.log(currTemp);
+  let fah = ctof(currTemp);
+  temp.textContent = `${fah} ℉`;
 
   fahr.classList.toggle("isDisabled");
   console.log(`Deg to f = ${fah}`);
-}
-let cel = document.querySelector("#cel");
+};
+
+const cel = document.querySelector("#cel");
 cel.addEventListener("click", setDegToCel);
-let fahr = document.querySelector("#fahr");
+const fahr = document.querySelector("#fahr");
 fahr.addEventListener("click", setDegToFahr);
