@@ -1,71 +1,3 @@
-//To get the current date and time
-let now = new Date();
-const h4Day = document.querySelector("#day");
-const pDate = document.querySelector("#date");
-const pTime = document.querySelector("#time");
-
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let year = now.getFullYear();
-
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-const months = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = months[now.getMonth()];
-
-//Feature #1 - set current date and time
-h4Day.innerHTML = `${day}`;
-pDate.innerHTML = `${date} ${month} ${year}`;
-pTime.innerHTML = `${hours}:${minutes} hrs`;
-
-//Feature #2
-//to set the city from search input
-const setCity = (event) => {
-  event.preventDefault();
-  const city = document.querySelector("#city");
-  //const cityValue = document.querySelector("#searchInput");
-  console.log(cityValue.value);
-  if (cityValue !== null && cityValue.value.length > 0) {
-    city.innerHTML = cityValue.value.toUpperCase();
-  } else {
-    alert("Please enter a city");
-  }
-};
-
-/* let search = document.querySelector("#search");
-search.addEventListener("click", setCity); */
-const cityValue = document.querySelector("#searchInput");
-cityValue.addEventListener("keypress", (event) => {
-  if (event.keyCode === 13) {
-    setCity(event);
-  }
-});
-
-const form = document.querySelector(".searchBar");
-form.addEventListener("submit", setCity);
-
 //Bonus Feature
 //function to convert temperature to fahreniet from celsius
 
@@ -113,7 +45,7 @@ const setDegToFahr = (event) => {
   //[currTemp] = 20
   let [currTemp] = temp.innerText.split(" "); //to get number and discard ℃
   console.log(currTemp);
-  let fah = ctof(currTemp);
+  let fah = Math.round(ctof(currTemp));
   temp.textContent = `${fah} ℉`;
 
   fahr.classList.toggle("isDisabled");

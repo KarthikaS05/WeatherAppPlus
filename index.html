@@ -13,13 +13,17 @@
 
     <link rel="stylesheet" href="src/style.css" />
     <link rel="shortcut icon" href="images/cloud.svg" type="image/x-icon" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
     <h1>Weather Forecast</h1>
     <div class="container">
       <form action="#" class="searchBar">
-        <a><ion-icon name="location-outline"></ion-icon></a>
+        <!-- <a><ion-icon name="location-outline"></ion-icon></a> -->
+        <button id="currLoc" value="currentLoc">
+          <ion-icon name="location-outline"></ion-icon>
+        </button>
         <input
           type="text"
           id="searchInput"
@@ -41,19 +45,22 @@
         </div>
         <div class="col-6 mainCity">
           <h2 id="city">Melbourne</h2>
-          <span class="deg"
+
+          <!-- ---------------------- link for temp Convertion ----------------------- -->
+
+          <!--   <span class="deg"
             ><a href="#" id="cel" class="isDisabled">℃ </a> |
             <a href="#" id="fahr">℉</a></span
-          >
+          > -->
           <p id="temp">20 <span>℃</span></p>
 
           <img class="currentWeatherImg" src="images/sunny.svg" alt="" />
         </div>
         <div class="col-3 mainCity__cond">
-          <h4>Partly Cloudy</h4>
-          <p>25℃/14℃</p>
-          <p>Perception : 5%</p>
-          <p>Humidity : 20%</p>
+          <h4 id="tempDesc">Partly Cloudy</h4>
+          <p id="tempMaxMin">25℃/14℃</p>
+          <p id="tempRealFeel">Feels Like : 18 ℃</p>
+          <p id="humidity">Humidity : 20%</p>
         </div>
       </div>
       <div class="row todayWeather">
@@ -130,6 +137,7 @@
     ></script>
     <!-- Icon script -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-    <script src="src/script.js"></script>
+    <script src="src/setDateTime.js"></script>
+    <script src="src/searchEngine.js"></script>
   </body>
 </html>
