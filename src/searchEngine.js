@@ -49,6 +49,7 @@ const searchCity = (event) => {
 
   //only if city is present - shortCircuiting &&
   cityName && axios.get(apiUrl).then(showTemp);
+  formSearch.reset(); //clearing the prev value
 };
 
 const formSearch = document.querySelector(".searchBar");
