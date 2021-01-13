@@ -180,6 +180,10 @@ i {
   justify-content: flex-start;
 }
 
+#tempDesc {
+  text-align: right;
+}
+
 .todayWeather,
 .sixDay {
   width: 100%;

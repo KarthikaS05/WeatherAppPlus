@@ -18,7 +18,7 @@
   </head>
   <body>
     <h1>Weather Forecast</h1>
-    <div class="container">
+    <div class="container" id="weatherDetails">
       <form action="#" class="searchBar">
         <!-- <a><ion-icon name="location-outline"></ion-icon></a> -->
         <button id="currLoc" value="currentLoc">
@@ -54,7 +54,12 @@
           > -->
           <p id="temp">20 <span>℃</span></p>
 
-          <img class="currentWeatherImg" src="images/sunny.svg" alt="" />
+          <img
+            id="weatherImg"
+            class="currentWeatherImg"
+            src="images/sunny.svg"
+            alt=""
+          />
         </div>
         <div class="col-3 mainCity__cond">
           <h4 id="tempDesc">Partly Cloudy</h4>
@@ -136,8 +141,17 @@
       crossorigin="anonymous"
     ></script>
     <!-- Icon script -->
-    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-    <script src="src/setDateTime.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <!-- -------------------- always on tp to be accessanle -------------------- -->
+
+    <script src="src/domElem.js"></script>
+    <script src="src/apiKey.js"></script>
     <script src="src/searchEngine.js"></script>
+    <script src="src/setDateTime.js"></script>
+    <script src="src/setTimeWeatherStyle.js"></script>
   </body>
 </html>

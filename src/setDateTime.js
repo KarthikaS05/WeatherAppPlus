@@ -39,3 +39,6 @@ let month = months[now.getMonth()];
 h4Day.innerHTML = `${day}`;
 pDate.innerHTML = `${date} ${month} ${year}`;
 pTime.innerHTML = `${hours}:${minutes} hrs`;
+
+console.log("get geo location");
+navigator.geolocation.getCurrentPosition(showPosition);

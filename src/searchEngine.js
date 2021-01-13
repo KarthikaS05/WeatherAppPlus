@@ -1,14 +1,4 @@
 /* when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city. */
-const place = document.querySelector("#city");
-const city = document.querySelector("#searchInput");
-const cityTemp = document.querySelector("#temp");
-
-const tempDesc = document.querySelector("#tempDesc");
-const tempMaxMin = document.querySelector("#tempMaxMin");
-const tempRealFeel = document.querySelector("#tempRealFeel");
-const humidityNow = document.querySelector("#humidity");
-
-const apiKey = "cc0c417508cefa040ce099e43e9e0ca8";
 
 //Sample url to get current weather
 /*https://api.openweathermap.org/data/2.5?q=Lisbon&units=metric&appid=YOURKEY
@@ -28,35 +18,65 @@ function showTemp(response) {
     main: { temp, temp_min, temp_max, feels_like, humidity },
     name,
   } = response.data;
+
+  const { main, description, icon } = response.data.weather[0];
+
   console.log(place.innerHTML);
   console.log(city.value);
-  place.innerHTML = name || city.value; //optional chaining
-  cityTemp.textContent = `${temp} ℃`;
+  place.innerHTML = name || city.value;
+  cityTemp.textContent = `${temp}℃`;
   tempDesc.textContent = response.data.weather[0].description;
+
+  tempDesc.textContent =
+    tempDesc.innerHTML.charAt(0).toUpperCase() + tempDesc.innerHTML.slice(1);
   tempMaxMin.textContent = `${temp_max}℃ / ${temp_min}℃ `;
   tempRealFeel.textContent = `Feels Like: ${feels_like}℃`;
   humidityNow.textContent = `Humidity: ${humidity}%`;
+
+  let tempIcon = response.data.weather[0].icon;
+  let iconURL = `http://openweathermap.org/img/wn/${tempIcon}@2x.png`;
+  //setting def value
+  document.getElementById("weatherImg").src = iconURL;
+
+  weatherImgIlus[main] &&
+    (document.getElementById("weatherImg").src = weatherImgIlus[main]);
 }
 
 //Search the city and get its weather
 const searchCity = (event) => {
   event.preventDefault();
-  let cityName = city.value || alert("please enter a city");
+  let cityName = city.value.trim() || alert("please enter a city");
   console.log(`City Search: ${cityName}`);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
   console.log(`API url : ${apiUrl}`);
   //ajax call
-
   //only if city is present - shortCircuiting &&
-  cityName && axios.get(apiUrl).then(showTemp);
+  // cityName && axios.get(apiUrl).then(showTemp);
+  /* 
+  axios
+    .get(apiUrl)
+    .then(showTemp)
+    .catch(() => {
+      console.log("error");
+    }); */
+
+  cityName &&
+    axios
+      .get(apiUrl)
+      .then(showTemp)
+      .catch((error) => {
+        console.log("error");
+        alert("please enter a valid city");
+      });
+
   formSearch.reset(); //clearing the prev value
 };
 
-const formSearch = document.querySelector(".searchBar");
 formSearch.addEventListener("submit", searchCity);
 
 city.addEventListener("keypress", (event) => {
-  if (event.keyCode === 13) {
+  //keyCode = 13
+  if (event.key === "Enter") {
     console.log("enter event");
     searchCity(event);
   }
