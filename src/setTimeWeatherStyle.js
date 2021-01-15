@@ -28,11 +28,13 @@ const bgImg = {
   },
   dawn: {
     imgDa: "images/sunrise.jpg",
-    colrDa: "linear-gradient(to bottom, #0066eb 17%, #dc9ae4 60%)",
+    colrDa:
+      "linear-gradient(to bottom, rgba(47, 71, 101,.2) 39%, rgba(236, 177, 121,.3) 80%)",
   },
   dusk: {
     imgDu: "images/sunset.jpg",
-    colrDu: "linear-gradient(to bottom, #2f4765 39%, #ecb179 80%)",
+    colrDu:
+      "linear-gradient(to bottom, rgba(0, 102, 220,.2) 30%, rgba(220, 154, 228,.2) 60%)",
   },
   night: {
     imgN: "images/night.jpg",
@@ -47,17 +49,23 @@ const {
   dusk: { imgDu, colrDu },
   night: { imgN, colrN },
 } = bgImg;
+
+const bgProp = "no-repeat center center/cover";
+
 if (hours > 5 && hours < 7) {
   //dawn
-  body.style.background = `url(${imgDa}) no-repeat center center/cover`;
-} else if (hours >= 7 && hours <= 18) {
+  body.style.background = `url(${imgDa}) ${bgProp}`;
+  container.style.background = `${colrDa}`;
+} else if (hours >= 7 && hours < 18) {
   //day
-  body.style.background = `url(${imgM}) no-repeat center center/cover`;
-} else if (hours > 18 && hours < 20) {
+  body.style.background = `url(${imgM}) ${bgProp}`;
+  container.style.background = `${colrM}`;
+} else if (hours > 17 && hours < 20) {
   //dusk
-  body.style.background = `url(${imgDu}) no-repeat center center/cover`;
+  body.style.background = `url(${imgDu}) ${bgProp}`;
+  container.style.background = `${colrDu}`;
 } else {
   //night
-  body.style.background = `url(${imgN}) no-repeat center center/cover`;
+  body.style.background = `url(${imgN}) ${bgProp}`;
   container.style.background = `${colrN}`;
 }

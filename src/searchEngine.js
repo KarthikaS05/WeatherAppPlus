@@ -66,7 +66,7 @@ const searchCity = (event) => {
       .then(showTemp)
       .catch((error) => {
         console.log("error");
-        alert("please enter a valid city");
+        alert("Cannot get the weather for enetered city");
       });
 
   formSearch.reset(); //clearing the prev value
