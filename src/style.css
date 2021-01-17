@@ -210,3 +210,13 @@ i {
   text-decoration: none;
   pointer-events: none;
 }
+
+.gitHub {
+  color: wheat;
+  text-align: center;
+}
+
+.gitHubIcon ion-icon {
+  --ionicon-stroke-width: 50px;
+  cursor: pointer;
+}
