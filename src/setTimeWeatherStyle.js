@@ -52,11 +52,11 @@ const {
 
 const bgProp = "no-repeat center center/cover";
 
-if (hours > 5 && hours < 7) {
+if (hours >= 5 && hours <= 7) {
   //dawn
   body.style.background = `url(${imgDa}) ${bgProp}`;
   container.style.background = `${colrDa}`;
-} else if (hours >= 7 && hours < 18) {
+} else if (hours > 7 && hours < 18) {
   //day
   body.style.background = `url(${imgM}) ${bgProp}`;
   container.style.background = `${colrM}`;
