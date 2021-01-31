@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="src/style.css" />
     <link rel="shortcut icon" href="images/cloud.svg" type="image/x-icon" />
+    <link rel="icons" href="https://icons8.com" />
 
     <!-- ---------------------------- Axios script ----------------------------- -->
 
@@ -37,7 +38,7 @@
         <input
           type="text"
           id="searchInput"
-          class="searchInput"
+          class="searchInput form-control"
           placeholder="Search City"
           autocomplete="off"
           autofocus="on"
@@ -49,33 +50,36 @@
       </form>
       <div class="row mainForcast">
         <div class="col-3 mainCity__date">
-          <h4 id="day"></h4>
+          <h4>Last updated:</h4>
           <p id="date"></p>
-          <p id="time"></p>
+          <p id="day_time"></p>
+          <h4 id="tempDesc"></h4>
         </div>
+
         <div class="col-6 mainCity">
-          <h2 id="city">Melbourne</h2>
+          <h2 id="city"></h2>
 
           <!-- ---------------------- link for temp Convertion ----------------------- -->
 
-          <!--   <span class="deg"
+          <span class="deg"
             ><a href="#" id="cel" class="isDisabled">℃ </a> |
             <a href="#" id="fahr">℉</a></span
-          > -->
-          <p id="temp">20 <span>℃</span></p>
+          >
+          <p id="temp"></p>
 
-          <img
-            id="weatherImg"
-            class="currentWeatherImg"
-            src="images/sunny.svg"
-            alt=""
-          />
+          <img id="weatherImg" class="currentWeatherImg" src="" alt="" />
         </div>
         <div class="col-3 mainCity__cond">
-          <h4 id="tempDesc">Partly Cloudy</h4>
-          <p id="tempMaxMin">25℃/14℃</p>
-          <p id="tempRealFeel">Feels Like : 18 ℃</p>
-          <p id="humidity">Humidity : 20%</p>
+          <p><h4 id="tempRealFeel"></h4></p>
+          
+          <p><i class="fas fa-tint"></i><span id="humidity"></span></p>
+          <p>
+            <i class="fas fa-temperature-low" id="tempLow"></i>
+           <span id="tempMaxMin"></span> 
+           <i class="fas fa-temperature-high" id="tempHi"></i>
+          </p>
+          <p><i class="fas fa-wind"></i><span id="wind"></span></p>
+
         </div>
       </div>
       <div class="row todayWeather">
@@ -151,7 +155,7 @@
         href="https://github.com/KarthikaS05/WeatherAppPlus.git"
         target="_blank"
         class="gitHubIcon"
-        ><ion-icon size="large" name="logo-github"></ion-icon> Open source coded
+        ><ion-icon size="large" name="logo-github"></ion-icon> Open-source coded
       </a>
       by Karthika Santhosh
     </div>
@@ -166,7 +170,9 @@
     <script src="src/domElem.js"></script>
     <script src="src/apiKey.js"></script>
     <script src="src/searchEngine.js"></script>
+    <script src="src/dailyForecast.js"></script>
     <script src="src/setDateTime.js"></script>
     <script src="src/setTimeWeatherStyle.js"></script>
+    <script src="src/tempConv.js"></script>
   </body>
 </html>

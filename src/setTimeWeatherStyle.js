@@ -5,7 +5,7 @@ const weatherImgIlus = {
   Drizzle: "images/rain.svg",
   Snow: "images/snow.svg",
   Clear: "images/clearSky.svg",
-  Clouds: "images/cloud.svg",
+  Clouds: "images/overcast.svg",
   //Mist
   //Smoke
   //Haze
@@ -18,9 +18,7 @@ const weatherImgIlus = {
 };
 
 //change background color and image wrt time
-const body = document.querySelector("body");
 
-const container = document.getElementById("weatherDetails");
 const bgImg = {
   morning: {
     imgM: "images/bg.jpg",
@@ -34,7 +32,8 @@ const bgImg = {
   dusk: {
     imgDu: "images/sunset.jpg",
     colrDu:
-      "linear-gradient(to bottom, rgba(0, 102, 220,.2) 30%, rgba(220, 154, 228,.2) 60%)",
+      "linear-gradient(to bottom, rgba(220, 154, 228,.5) 39%,rgba(0, 102, 220,.5) 80%)",
+    colrBtn: "thistle",
   },
   night: {
     imgN: "images/night.jpg",
@@ -46,26 +45,29 @@ const bgImg = {
 const {
   morning: { imgM, colrM },
   dawn: { imgDa, colrDa },
-  dusk: { imgDu, colrDu },
+  dusk: { imgDu, colrDu, colrBtn },
   night: { imgN, colrN },
 } = bgImg;
 
 const bgProp = "no-repeat center center/cover";
-
-if (hours >= 5 && hours <= 7) {
-  //dawn
-  body.style.background = `url(${imgDa}) ${bgProp}`;
-  container.style.background = `${colrDa}`;
-} else if (hours > 7 && hours < 18) {
-  //day
-  body.style.background = `url(${imgM}) ${bgProp}`;
-  container.style.background = `${colrM}`;
-} else if (hours > 17 && hours < 20) {
-  //dusk
-  body.style.background = `url(${imgDu}) ${bgProp}`;
-  container.style.background = `${colrDu}`;
-} else {
-  //night
-  body.style.background = `url(${imgN}) ${bgProp}`;
-  container.style.background = `${colrN}`;
-}
+const setBgStyle = (hours) => {
+  if (hours >= 5 && hours <= 7) {
+    //dawn
+    body.style.background = `url(${imgDa}) ${bgProp}`;
+    container.style.background = `${colrDa}`;
+  } else if (hours > 7 && hours < 18) {
+    //day
+    body.style.background = `url(${imgM}) ${bgProp}`;
+    container.style.background = `${colrM}`;
+  } else if (hours > 17 && hours < 20) {
+    //dusk
+    body.style.background = `url(${imgDu}) ${bgProp}`;
+    container.style.background = `${colrDu}`;
+    searchBtn.style.background = `${colrBtn}`;
+    currLoc.style.background = `${colrBtn}`;
+  } else {
+    //night
+    body.style.background = `url(${imgN}) ${bgProp}`;
+    container.style.background = `${colrN}`;
+  }
+};

@@ -1,14 +1,4 @@
 //To get the current date and time
-let now = new Date();
-const h4Day = document.querySelector("#day");
-const pDate = document.querySelector("#date");
-const pTime = document.querySelector("#time");
-
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let year = now.getFullYear();
-
 const days = [
   "Sunday",
   "Monday",
@@ -18,7 +8,7 @@ const days = [
   "Friday",
   "Saturday",
 ];
-let day = days[now.getDay()];
+
 const months = [
   "Jan",
   "Feb",
@@ -33,12 +23,21 @@ const months = [
   "Nov",
   "Dec",
 ];
-let month = months[now.getMonth()];
 
-//Feature #1 - set current date and time
-h4Day.innerHTML = `${day}`;
-pDate.innerHTML = `${date} ${month} ${year}`;
-pTime.innerHTML = `${hours}:${minutes} hrs`;
+/* ----- Function to get the timestamp(millsecs from 1970yr) to current ----- */
 
-console.log("get geo location");
-navigator.geolocation.getCurrentPosition(showPosition);
+const formatDate = (timestamp) => {
+  //cal the date
+  const curr = new Date(timestamp);
+  let cityDay = days[curr.getDay()];
+  let cityMonth = months[curr.getMonth()];
+  let cityDate = curr.getDate();
+  let cityHrs = curr.getHours();
+  let cityMins = curr.getMinutes();
+  cityHrs = `${cityHrs < 10 ? `${cityHrs}`.padStart(2, "0") : cityHrs}`;
+  cityMins = `${cityMins < 10 ? `${cityMins}`.padStart(2, "0") : cityMins}`;
+  let cityYear = curr.getFullYear();
+  dateElem.innerHTML = `${cityDate} ${cityMonth} ${cityYear}`;
+  timeElem.textContent = `${cityDay} ${cityHrs}:${cityMins} hrs`;
+  setBgStyle(cityHrs);
+};

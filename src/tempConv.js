@@ -24,7 +24,7 @@ const setDegToCel = (event) => {
   event.preventDefault();
   let [currTemp] = temp.innerText.split(" "); //to get 20 and discard ℉
   console.log(currTemp);
-  let c = ftoC(currTemp);
+  let c = ftoC(currTemp).toFixed(2);
   temp.textContent = `${c} ℃`;
   console.log(`Deg to cel = ${c}`);
   fahr.classList.toggle("isDisabled");
@@ -45,7 +45,7 @@ const setDegToFahr = (event) => {
   //[currTemp] = 20
   let [currTemp] = temp.innerText.split(" "); //to get number and discard ℃
   console.log(currTemp);
-  let fah = Math.round(ctof(currTemp));
+  let fah = ctof(currTemp).toFixed(2);
   temp.textContent = `${fah} ℉`;
 
   fahr.classList.toggle("isDisabled");

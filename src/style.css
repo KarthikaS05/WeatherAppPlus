@@ -81,8 +81,8 @@ i {
 .searchInput {
   height: 100%;
   flex-grow: 1;
-  margin: 1px 0;
-  margin-right: 5px;
+  margin: 3px;
+  /* margin-right: 5px; */
   border: none;
   outline: none;
   padding: 10px;
@@ -134,6 +134,7 @@ i {
   margin: 0 auto;
   width: 60%;
   height: 60%;
+  object-fit: cover;
 }
 .mainForcast {
   width: 100%;
@@ -145,6 +146,10 @@ i {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+}
+
+.realFeel {
+  margin: le;
 }
 .mainCity {
   display: flex;
@@ -167,12 +172,19 @@ i {
   color: #05083a;
   font-size: 25px;
 }
+
 .mainCity span a {
   color: #02163b;
   font-size: 20px;
   font-weight: bolder;
 }
 
+#tempDesc {
+  align-self: flex-start;
+  margin: 10px 0;
+  font-size: 40px;
+  color: #01092e;
+}
 .mainCity__cond {
   display: flex;
   flex-direction: column;
@@ -180,10 +192,14 @@ i {
   justify-content: flex-start;
 }
 
-#tempDesc {
-  text-align: right;
+#tempRealFeel {
+  align-self: flex-end;
 }
 
+.mainCity__cond i {
+  font-size: 28px;
+  color: #01092e;
+}
 .todayWeather,
 .sixDay {
   width: 100%;
@@ -214,6 +230,14 @@ i {
 .gitHub {
   color: wheat;
   text-align: center;
+}
+
+.gitHub a {
+  color: aquamarine;
+}
+
+.gitHub a:hover {
+  color: yellowgreen;
 }
 
 .gitHubIcon ion-icon {

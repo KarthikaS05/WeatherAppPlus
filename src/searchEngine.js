@@ -15,31 +15,36 @@ function showTemp(response) {
 
   //obj destructuring
   const {
+    dt,
     main: { temp, temp_min, temp_max, feels_like, humidity },
     name,
+    wind: { speed },
   } = response.data;
 
   const { main, description, icon } = response.data.weather[0];
 
-  console.log(place.innerHTML);
-  console.log(city.value);
+  //formate time from value given in response mill secs
+  formatDate(dt * 1000);
+
   place.innerHTML = name || city.value;
-  cityTemp.textContent = `${temp}℃`;
-  tempDesc.textContent = response.data.weather[0].description;
+  cityTemp.textContent = `${temp} ℃`;
+  tempDesc.textContent = description;
 
   tempDesc.textContent =
     tempDesc.innerHTML.charAt(0).toUpperCase() + tempDesc.innerHTML.slice(1);
-  tempMaxMin.textContent = `${temp_max}℃ / ${temp_min}℃ `;
+  tempMaxMin.textContent = `${temp_min}℃/${temp_max}℃  `;
   tempRealFeel.textContent = `Feels Like: ${feels_like}℃`;
-  humidityNow.textContent = `Humidity: ${humidity}%`;
+  humidityNow.textContent = ` Humidity: ${humidity}% `;
+  windSpeedElem.textContent = ` Wind: ${speed} km/h`;
 
-  let tempIcon = response.data.weather[0].icon;
+  let tempIcon = icon;
   let iconURL = `http://openweathermap.org/img/wn/${tempIcon}@2x.png`;
   //setting def value
-  document.getElementById("weatherImg").src = iconURL;
+  weatherImgElem.setAttribute("src", iconURL);
+  weatherImgElem.setAttribute("alt", description);
 
   weatherImgIlus[main] &&
-    (document.getElementById("weatherImg").src = weatherImgIlus[main]);
+    weatherImgElem.setAttribute("src", weatherImgIlus[main]);
 }
 
 //Search the city and get its weather
@@ -51,22 +56,13 @@ const searchCity = (event) => {
   console.log(`API url : ${apiUrl}`);
   //ajax call
   //only if city is present - shortCircuiting &&
-  // cityName && axios.get(apiUrl).then(showTemp);
-  /* 
-  axios
-    .get(apiUrl)
-    .then(showTemp)
-    .catch(() => {
-      console.log("error");
-    }); */
-
   cityName &&
     axios
       .get(apiUrl)
       .then(showTemp)
       .catch((error) => {
         console.log("error");
-        alert("Cannot get the weather for enetered city");
+        alert("Cannot get the weather for the entered city");
       });
 
   formSearch.reset(); //clearing the prev value
@@ -104,5 +100,7 @@ const getLocation = (event) => {
   navigator.geolocation.getCurrentPosition(showPosition);
 };
 
-const currLoc = document.querySelector("#currLoc");
 currLoc.addEventListener("click", getLocation);
+
+//set the current location weather by default
+navigator.geolocation.getCurrentPosition(showPosition);
