@@ -125,3 +125,7 @@ const getHourlyWeather = (lat, long) => {
   let hourlyURL = ` https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=daily,current,minutely&appid=${apiKey}&units=metric`;
   axios.get(hourlyURL).then(showHourlyWeather);
 };
+
+//initial setup
+let url = `https://api.openweathermap.org/data/2.5/weather?q=melbourne&units=metric&appid=${apiKey}`;
+axios.get(url).then(showTemp);
