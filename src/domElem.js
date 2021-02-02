@@ -25,8 +25,3 @@ const timeElem = document.querySelector("#day_time");
 const hrForecast = document.querySelector("#forecast");
 //day wise forcast
 const dayForecast = document.querySelector("#days");
-
-/* window.onload = () => {
-  navigator.geolocation.getCurrentPosition(showPosition);
-};
- */
