@@ -17,11 +17,12 @@ body {
 }
 
 h1 {
-  color: rgb(243, 202, 126);
-  font-size: 40px;
+  color: rgb(238, 129, 4);
+  font-size: 50px;
   margin: 30px;
   text-align: center;
   padding: 10px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 p {
@@ -121,14 +122,15 @@ i {
 .searchBar ion-icon {
   color: rgb(56, 5, 56);
   font-size: 23px;
-  --ionicon-stroke-width: 50px;
+  --ionicon-stroke-width: 70px;
   margin: auto 4px;
   cursor: pointer;
   padding: 5px;
+  transition: all 0.2s;
 }
-.searchBar a:hover,
-.searchBar button:hover {
-  background: rgb(250, 249, 249);
+
+.searchBar button:hover ion-icon {
+  color: rgb(245, 241, 227);
 }
 .currentWeatherImg {
   margin: 0 auto;
@@ -148,9 +150,6 @@ i {
   justify-content: flex-start;
 }
 
-.realFeel {
-  margin: le;
-}
 .mainCity {
   display: flex;
   flex-direction: column;
@@ -182,18 +181,18 @@ i {
 #tempDesc {
   align-self: flex-start;
   margin: 10px 0;
-  font-size: 40px;
+  font-size: 30px;
   color: #01092e;
 }
 .mainCity__cond {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
 }
 
 #tempRealFeel {
-  align-self: flex-end;
+  align-self: center;
 }
 
 .mainCity__cond i {
@@ -205,17 +204,28 @@ i {
   width: 100%;
   margin: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: baseline;
+  align-items: baseline;
   padding: 20px;
 }
 
-.todayWeather .col-3,
+#forecast p::first-letter,
+#days p::first-letter {
+  text-transform: capitalize;
+}
+
+#forecast h3,
+#days h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+}
+
+.todayWeather .col-2,
 .sixDay .col-2 {
   width: 100%;
   flex: 1 1 0;
   text-align: center;
-  border-left: 1px solid grey;
 }
 
 .isDisabled {

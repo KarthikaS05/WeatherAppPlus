@@ -1,20 +1,11 @@
 /* when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city. */
 
-//Sample url to get current weather
-/*https://api.openweathermap.org/data/2.5?q=Lisbon&units=metric&appid=YOURKEY
-api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
- */
-
 //show temp for the searched city
 function showTemp(response) {
-  console.log(response);
-  /*  let tempValue = Math.round(response.data.main.temp);
-  console.log(tempValue); */
-  /* 
-  console.log(response.data?.name || "Cannot Find the city"); */
-
   //obj destructuring
+  console.log(response.data);
   const {
+    coord: { lat, lon },
     dt,
     main: { temp, temp_min, temp_max, feels_like, humidity },
     name,
@@ -32,7 +23,9 @@ function showTemp(response) {
 
   tempDesc.textContent =
     tempDesc.innerHTML.charAt(0).toUpperCase() + tempDesc.innerHTML.slice(1);
-  tempMaxMin.textContent = `${temp_min}℃/${temp_max}℃  `;
+  tempMaxMin.textContent = `${Math.round(temp_min)}℃/${Math.round(
+    temp_max
+  )}℃  `;
   tempRealFeel.textContent = `Feels Like: ${feels_like}℃`;
   humidityNow.textContent = ` Humidity: ${humidity}% `;
   windSpeedElem.textContent = ` Wind: ${speed} km/h`;
@@ -45,6 +38,18 @@ function showTemp(response) {
 
   weatherImgIlus[main] &&
     weatherImgElem.setAttribute("src", weatherImgIlus[main]);
+
+  //to display the hourly forecast
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&units=metric&appid=${apiKey}`;
+
+  //display hourly(3) weather;
+  axios.get(forecastUrl).then(showForeCast);
+
+  //get daily wether
+  getDailyWeather(lat, lon);
+
+  //get hourly forecast
+  // getHourlyWeather(lat, lon);
 }
 
 //Search the city and get its weather
@@ -68,8 +73,10 @@ const searchCity = (event) => {
   formSearch.reset(); //clearing the prev value
 };
 
+//listener for from submit
 formSearch.addEventListener("submit", searchCity);
 
+//search event by enter key
 city.addEventListener("keypress", (event) => {
   //keyCode = 13
   if (event.key === "Enter") {
@@ -82,11 +89,9 @@ city.addEventListener("keypress", (event) => {
 Add a Current Location button. When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API. */
 
 const showPosition = (position) => {
-  console.log(position);
   const {
     coords: { latitude: la, longitude: lo },
   } = position;
-  console.log(la, lo);
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${la}&lon=${lo}&units=metric&appid=${apiKey}`;
   console.log(`API url : ${apiUrl}`);
@@ -104,3 +109,19 @@ currLoc.addEventListener("click", getLocation);
 
 //set the current location weather by default
 navigator.geolocation.getCurrentPosition(showPosition);
+
+/* ----------------------- daily and hourly API fetch ----------------------- */
+
+//get the response with coordinates to get daily weather
+const getDailyWeather = (lat, long) => {
+  console.log("daily weather fetch");
+  let dailyURL = ` https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,current,minutely&appid=${apiKey}&units=metric`;
+  axios.get(dailyURL).then(showDailyWeather);
+};
+
+//to get the hourly weather forcast response
+const getHourlyWeather = (lat, long) => {
+  console.log("hourly weather fetch");
+  let hourlyURL = ` https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=daily,current,minutely&appid=${apiKey}&units=metric`;
+  axios.get(hourlyURL).then(showHourlyWeather);
+};

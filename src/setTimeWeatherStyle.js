@@ -31,22 +31,25 @@ const bgImg = {
   },
   dusk: {
     imgDu: "images/sunset.jpg",
-    colrDu:
-      "linear-gradient(to bottom, rgba(220, 154, 228,.5) 39%,rgba(0, 102, 220,.5) 80%)",
-    colrBtn: "thistle",
+    colrDu: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+
+    btnDu: "thistle",
   },
   night: {
     imgN: "images/night.jpg",
     colrN:
       "linear-gradient(to top, rgba(105, 110, 114,.7) 39%, rgba(188, 179, 169,.5) 70%)",
+    btnN: "rgb(188, 179, 169)",
   },
 };
-
+/* background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); */
+/*"linear-gradient(to bottom, rgba(220, 154, 228,.5) 39%,rgba(0, 102, 220,.5) 80%)", */
 const {
   morning: { imgM, colrM },
   dawn: { imgDa, colrDa },
-  dusk: { imgDu, colrDu, colrBtn },
-  night: { imgN, colrN },
+  dusk: { imgDu, colrDu, btnDu },
+  night: { imgN, colrN, btnN },
 } = bgImg;
 
 const bgProp = "no-repeat center center/cover";
@@ -63,11 +66,13 @@ const setBgStyle = (hours) => {
     //dusk
     body.style.background = `url(${imgDu}) ${bgProp}`;
     container.style.background = `${colrDu}`;
-    searchBtn.style.background = `${colrBtn}`;
-    currLoc.style.background = `${colrBtn}`;
+    searchBtn.style.background = `${btnDu}`;
+    currLoc.style.background = `${btnDu}`;
   } else {
     //night
     body.style.background = `url(${imgN}) ${bgProp}`;
     container.style.background = `${colrN}`;
+    searchBtn.style.background = `${btnN}`;
+    currLoc.style.background = `${btnN}`;
   }
 };
